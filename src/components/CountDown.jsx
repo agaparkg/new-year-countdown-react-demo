@@ -14,7 +14,8 @@ const CountDown = ({ currYear }) => {
   });
   //   d, h, m, s
 
-  const newYearTime = new Date(`January 01 ${currYear + 1} 00:00:00`);
+  //   const newYearTime = new Date(`January 01 ${currYear + 1} 00:00:00`);
+  const newYearTime = new Date(`May 08 ${currYear} 18:06:00`);
 
   const handleStart = () => {
     intervalRef.current = setInterval(() => {
@@ -25,15 +26,6 @@ const CountDown = ({ currYear }) => {
       const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
       const minutes = Math.floor(diff / 1000 / 60) % 60;
       const seconds = Math.floor(diff / 1000) % 60;
-
-      //   const totSeconds = Math.floor(diff / 1000);
-      //   const totMinutes = Math.floor(totSeconds / 60);
-      //   const totHours = Math.floor(totMinutes / 60);
-
-      //   const days = Math.floor(totHours / 24);
-      //   const hours = totHours - d * 24;
-      //   const minutes = totMinutes - totHours * 60;
-      //   const seconds = totSeconds - totMinutes * 60;
 
       //   console.log(days, hours, minutes, seconds);
 
@@ -46,7 +38,15 @@ const CountDown = ({ currYear }) => {
     }, 1000);
   };
 
+  const handleStop = () => {
+    clearInterval(intervalRef.current);
+  };
+
   const { d, h, m, s } = timeObj;
+
+  if (d === 0 && h === 0 && m === 0 && s === 0) {
+    handleStop();
+  }
 
   return (
     <>
