@@ -1,7 +1,7 @@
-const Year = () => {
+const Year = ({ currYear }) => {
   return (
     <>
-      <div className="year">2025</div>
+      <div className="year">{currYear + 1}</div>
       <h1>New Year Countdown</h1>
     </>
   );

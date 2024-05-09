@@ -1,26 +1,15 @@
-const CountDown = () => {
+import Days from "./Days";
+import Hours from "./Hours";
+import Minutes from "./Minutes";
+import Seconds from "./Seconds";
+
+const CountDown = ({ currYear }) => {
   return (
     <div className="countdown">
-      <div className="time">
-        {/* days */}
-        <h2>00</h2>
-        <small>days</small>
-      </div>
-      <div className="time">
-        {/* hours */}
-        <h2>00</h2>
-        <small>hours</small>
-      </div>
-      <div className="time">
-        {/* minutes */}
-        <h2>00</h2>
-        <small>minutes</small>
-      </div>
-      <div className="time">
-        {/* seconds */}
-        <h2>00</h2>
-        <small>seconds</small>
-      </div>
+      <Days />
+      <Hours />
+      <Minutes />
+      <Seconds />
     </div>
   );
 };
