@@ -6,25 +6,55 @@ import Seconds from "./Seconds";
 
 const CountDown = ({ currYear }) => {
   const intervalRef = useRef(null);
-
   const [timeObj, setTimeObj] = useState({
     d: 0,
     h: 0,
     m: 0,
     s: 0,
   });
-
   //   d, h, m, s
 
-  const handleStart = () => {};
+  const newYearTime = new Date(`January 01 ${currYear + 1} 00:00:00`);
+
+  const handleStart = () => {
+    intervalRef.current = setInterval(() => {
+      const currentTime = new Date();
+      const diff = newYearTime - currentTime; // number in milliseconds
+
+      const days = Math.floor(diff / 1000 / 60 / 60 / 24);
+      const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+      const minutes = Math.floor(diff / 1000 / 60) % 60;
+      const seconds = Math.floor(diff / 1000) % 60;
+
+      //   const totSeconds = Math.floor(diff / 1000);
+      //   const totMinutes = Math.floor(totSeconds / 60);
+      //   const totHours = Math.floor(totMinutes / 60);
+
+      //   const days = Math.floor(totHours / 24);
+      //   const hours = totHours - d * 24;
+      //   const minutes = totMinutes - totHours * 60;
+      //   const seconds = totSeconds - totMinutes * 60;
+
+      //   console.log(days, hours, minutes, seconds);
+
+      setTimeObj({
+        d: days,
+        h: hours,
+        m: minutes,
+        s: seconds,
+      });
+    }, 1000);
+  };
+
+  const { d, h, m, s } = timeObj;
 
   return (
     <>
       <div className="countdown">
-        <Days />
-        <Hours />
-        <Minutes />
-        <Seconds />
+        <Days d={d} />
+        <Hours h={h} />
+        <Minutes m={m} />
+        <Seconds s={s} />
       </div>
       <button onClick={handleStart} className="start-btn">
         Start

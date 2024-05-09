@@ -1,10 +1,10 @@
 import React from "react";
 
-const Days = () => {
+const Days = ({ d }) => {
   return (
     <div className="time">
       {/* days */}
-      <h2>00</h2>
+      <h2>{d < 10 ? "0" + d : d}</h2>
       <small>days</small>
     </div>
   );

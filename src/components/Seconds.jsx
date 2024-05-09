@@ -1,10 +1,10 @@
 import React from "react";
 
-const Seconds = () => {
+const Seconds = ({ s }) => {
   return (
     <div className="time">
       {/* seconds */}
-      <h2>00</h2>
+      <h2>{s < 10 ? "0" + s : s}</h2>
       <small>seconds</small>
     </div>
   );
