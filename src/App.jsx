@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <div className="year"></div>
+      <div className="year">2025</div>
 
       <h1>New Year Countdown</h1>
 
@@ -30,7 +30,6 @@ function App() {
           <small>seconds</small>
         </div>
       </div>
-      <p className="new-year">2025</p>
     </div>
   );
 }
